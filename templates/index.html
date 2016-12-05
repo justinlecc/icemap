@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>F-1 Feeder</title>
+    </head>
+
+    <body ng-app="playogoApp" ng-controller="MainController">
+
+        <title>Hello from Flask</title>
+        {% if slug %}
+          <h1>Hello {{ slug }}!</h1>
+        {% else %}
+          <h1>Hello, World!</h1>
+        {% endif %}
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+        <script src="/public/js/main.js"></script>
+        <link rel="stylesheet" type="text/css" href="/public/css/main.css">
+    </body>
+</html>

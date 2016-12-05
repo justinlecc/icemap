@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>F-1 Feeder</title>
+    </head>
+
+    <body>
+
+        {% if params %}
+          <h1>Name:        {{ params['venue_name'] }}</h1>
+          <h3>Address:     {{ params['venue_street_address'] }}</h3>
+          <h3>City:        {{ params['venue_city'] }}</h3>
+          <h3>Province:    {{ params['venue_province'] }}</h3>
+          <h3>Postal Code: {{ params['venue_postal_code'] }}</h3>
+        {% endif %}
+
+        <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" type="text/css" > might not need this-->
+        <!-- Compiled and minified CSS -->
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css"> -->
+        <link rel="stylesheet" type="text/css" href="/public/css/main.css">
+
+        <script src="/public/js/main.js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script> -->
+    </body>
+</html>
