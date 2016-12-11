@@ -1,3 +1,17 @@
 body {
 
 }
+
+.contact-component {
+    word-wrap: break-word;
+}
+
+.contact-component h6 {
+    font-weight: 600;
+}
+
+.pogo-breadcrumb {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

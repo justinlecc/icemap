@@ -1,25 +1,164 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>F-1 Feeder</title>
+         <title>{{ params['venue_name'] }} | Playogo Rinks</title>
+        <!--Import Google Icon Font-->
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+
+        <link rel="stylesheet" type="text/css" href="/public/css/main.css">
+
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
 
     <body>
 
-        {% if params %}
-          <h1>Name:        {{ params['venue_name'] }}</h1>
-          <h3>Address:     {{ params['venue_street_address'] }}</h3>
-          <h3>City:        {{ params['venue_city'] }}</h3>
-          <h3>Province:    {{ params['venue_province'] }}</h3>
-          <h3>Postal Code: {{ params['venue_postal_code'] }}</h3>
-        {% endif %}
+         <nav class="light-blue accent-3">
+            <div class="container nav-wrapper">
+                <div class="col s12 pogo-breadcrumb">
+                    <a href="#!" class="breadcrumb">First</a>
+                    <a href="#!" class="breadcrumb">Second</a>
+                    <a href="#!" class="breadcrumb">{{ params['venue_name'] }}</a>
+                </div>
+            </div>
+        </nav>
 
-        <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" type="text/css" > might not need this-->
-        <!-- Compiled and minified CSS -->
-        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css"> -->
-        <link rel="stylesheet" type="text/css" href="/public/css/main.css">
+        <div class="container">
 
+            <h4>
+                {{ params['venue_name'] }}
+            </h4>
+
+            <div class="row">
+                <div class="col s12">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">Contact</span>
+                            <div class="contact-holder">
+                                <div class="row">
+
+                                    <div class="col s12 l4 contact-component">
+                                        <h6 class="mdi-action-home">Address <i class="material-icons tiny">location_on</i></h6>
+                                        <p>
+                                            {{ params['venue_street_number'] + ' ' + params['venue_route_short'] }}
+                                        </p>
+                                        <p>
+                                            {{ params['venue_city'] }}, {{ params['venue_province_short'] }}, {{ params['venue_country'] }}
+                                        </p>
+                                        <p>
+                                            {{ params['venue_postal_code'] }}
+                                        </p>
+                                    </div>
+
+                                    <div class="col s12 l4 contact-component">
+                                        <h6 class="mdi-hardware-phone-android">
+                                            Phone Number <i class="material-icons tiny">call</i>
+                                        </h6>
+                                        <p>
+                                            {{ params['venue_phone_number'] }}
+                                        </p>
+                                    </div>
+
+                                    <div class="col s12 l4 contact-component">
+                                        <h6 class="mdi-action-open-in-browser">
+                                            Website <i class="material-icons tiny">web</i>
+                                        </h6>
+                                        <p>
+                                            <a href="{{ params['venue_website']}}">
+                                                {{ params['venue_website']}}
+                                            </a>
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">Location</span>
+                            <iframe 
+                                width="100%" height="450" 
+                                frameborder="0" style="border:0"
+                                src="https://www.google.com/maps/embed/v1/search?q={{ params['google_encoded_location'] }}&key={{ params['google_api_key'] }}" 
+                                allowfullscreen>        
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-content">
+                        
+                            <h5>Nearby Tim Horton's</h5>
+                            <iframe 
+                                width="100%" height="450" 
+                                frameborder="0" style="border:0"
+                                src="https://www.google.com/maps/embed/v1/search?q={{ params['google_encoded_timhortons'] }}&key={{ params['google_api_key'] }}" 
+                                allowfullscreen>        
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-content">
+                            <h5>Nearby Hotels</h5>
+                            <iframe 
+                                width="100%" height="450" 
+                                frameborder="0" style="border:0"
+                                src="https://www.google.com/maps/embed/v1/search?q={{ params['google_encoded_hotels'] }}&key={{ params['google_api_key'] }}"
+                                allowfullscreen>        
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- End of container -->
+
+<footer class="page-footer light-blue accent-3">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Playogo Rinks</h5>
+                <p class="grey-text text-lighten-4">
+                    Find your place to play.
+                </p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <!-- <h5 class="white-text">Links</h5>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                </ul> -->
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            <span class="right">© 2016 Copyright</span>
+        <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
+        </div>
+    </div>
+</footer>
+
+        <!-- JS -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="/public/js/main.js"></script>
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
     </body>
 </html>

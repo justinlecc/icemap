@@ -4,7 +4,7 @@ from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 from playogo_flask import PlayogoFlask
 from modules.playogo_db import PlayogoDb
-from router import Router
+from modules.router import Router
 from modules.csv_io import CsvIo
 
 # Config log files

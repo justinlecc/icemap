@@ -1,4 +1,5 @@
 from modules.playogo_db import PlayogoDb, Venue
+import os, urllib
 
 class Controller():
     pass
@@ -9,14 +10,23 @@ class VenuesController(Controller):
 
         db = PlayogoDb()
 
-        venue = db.session.query(Venues).filter_by(slug=slug);
-
-        print(venue)
+        venue = db.session.query(Venue).filter_by(id=slug).first();
 
         return {
-            'venue_name': 'Westworld',
-            'venue_street_address': '100 William St. W.',
-            'venue_city': 'Waterloo',
-            'venue_province': 'Ontario',
-            'venue_postal_code': 'N2N 3S3'
+            'venue_name': venue.name,
+            'venue_formatted_address': venue.formatted_address,
+            'venue_street_number': str(venue.street_number),
+            'venue_route_short': venue.route_short,
+            'venue_city': venue.city_long,
+            'venue_province_short': venue.admin_area_level_1_short,
+            'venue_country': venue.country_short,
+            'venue_postal_code': venue.postal_code,
+            'venue_lat': venue.lat,
+            'venue_lng': venue.lng,
+            'venue_phone_number': venue.phone_number,
+            'venue_website': venue.website,
+            'google_encoded_location': urllib.parse.quote_plus(venue.formatted_address),
+            'google_encoded_timhortons': urllib.parse.quote_plus('Tim Horton\'s near ' + venue.formatted_address),
+            'google_encoded_hotels': urllib.parse.quote_plus('Hotels near ' + venue.formatted_address),
+            'google_api_key': os.environ['PLAYOGO_GMAPS_API_KEY']
         }
