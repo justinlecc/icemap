@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <title>{{ params['search_query'] }} | Playogo Rinks</title>
+        <!--Import Google Icon Font-->
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+
+        <link rel="stylesheet" type="text/css" href="/public/css/main.css">
+
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body>
+
+        {% include 'navbar.html' %}
+
+
+        <div class="container">
+
+    <!--             Rinks close to:
+                <div class="input-field inline">
+                    <input id="email" type="email" class="validate">
+                    <label for="email" data-error="wrong" data-success="right">Location</label>
+                </div> -->
+
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">
+                        <h5>
+                            Rinks close to:
+                            <div class="input-field inline">
+                                <form action="/rinks" method="GET">
+                                    <input id="search_query" name="q" type="text" class="validate" value="{{params['search_query']}}" placeholder="location">
+                                <!-- <label for="search_query" data-error="wrong" data-success="right">
+                                    Location
+                                </label> -->
+                                </form>
+                            </div>
+                        </h5>
+                    </span>
+                    <div class="contact-holder">
+                        <div class="collection with-header">
+                        {% for closest_venue in params['closest_venues'] %}
+                            <a href="/rinks/{{closest_venue['venue'].id}}" class="collection-item">
+                                <span class="pogo-collection-item">{{closest_venue['venue'].name}} - {{closest_venue['duration_text']}}</span>
+                                <span class="secondary-content">
+                                    <i class="material-icons">send</i>
+                                </span>
+                            </a>
+                        {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        {% include 'footer.html' %}
+        
+        <!-- JS -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="/public/js/main.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    </body>
+</html>

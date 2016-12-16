@@ -1,10 +1,35 @@
 from modules.playogo_db import PlayogoDb, Venue
-import os, urllib
+from modules.venue_search import VenueSearch
+from bs4 import BeautifulSoup
+import os, urllib, requests, json, logging
 
 class Controller():
     pass
 
+
 class VenuesController(Controller):
+
+    def search_results(search_query):
+
+        db = PlayogoDb()
+
+        lat, lng, err = VenueSearch.get_lat_lng(search_query)
+
+        if err:
+            logging.error("VenueSearch::get_lat_lng failed.")
+            return {
+                'closest_venues': [],
+                'search_query': search_query,
+                'error': "Sorry but there was a problem processing your request. If this problem persists please report it to playogosports@gmail.com."
+            }
+
+        closest_venues = VenueSearch.get_closest_venues(lat, lng)
+
+        return {
+            'closest_venues': closest_venues,
+            'search_query': search_query,
+            'encoded_search_query': urllib.parse.quote_plus(search_query)
+        }
 
     def venue(slug):
 
@@ -30,3 +55,8 @@ class VenuesController(Controller):
             'google_encoded_hotels': urllib.parse.quote_plus('Hotels near ' + venue.formatted_address),
             'google_api_key': os.environ['PLAYOGO_GMAPS_API_KEY']
         }
+
+    def home_page():
+        return {}
+
+
