@@ -2,3 +2,8 @@ import/scraping
 playogo-env
 __pycache__
 modules/__pycache__
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
