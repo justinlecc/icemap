@@ -1,5 +1,6 @@
 alembic==0.8.8
 beautifulsoup4==4.5.1
+chardet2==2.0.3
 click==6.6
 Flask==0.11.1
 Flask-Alembic==2.0.1
