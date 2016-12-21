@@ -13,9 +13,7 @@ class PlayogoDb():
 
     # Instantiation creates/returns the singleton instance.
     def __new__(cls):
-
         if PlayogoDb.__instance is None:
-
             PlayogoDb.__instance = SQLAlchemy(PlayogoFlask())
 
         return PlayogoDb.__instance
