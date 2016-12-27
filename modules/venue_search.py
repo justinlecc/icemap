@@ -1,6 +1,6 @@
 from modules.playogo_db import PlayogoDb, Venue
 from bs4 import BeautifulSoup
-import os, urllib, requests, json, logging
+import os, urllib, json, logging
 
 class VenueSearch():
 
@@ -61,10 +61,6 @@ class VenueSearch():
         content_string = BeautifulSoup(response.content, 'html.parser').prettify()
         data = json.loads(content_string)
 
-        print("\n\n\n\n\n\n")
-        print(data)
-        print("\n\n\n\n\n\n")
-
         venues_info = []
 
         for i, raw_venue in enumerate(raw_venues):
@@ -106,40 +102,3 @@ class VenueSearch():
             })
 
         return venues_info
-
-"""
-id 11
-name Kitchener Memorial Auditorium (Dom Cardillo, Kinsmen & Kiwanis Arenas)
-website http://www.theaud.ca/
-phone_number 519-741-2699
-slug None
-street_number 400
-route_short East Ave
-route_long East Avenue
-city_short Kitchener
-city_long Kitchener
-admin_area_level_2_long Waterloo Regional Municipality
-admin_area_level_2_short Waterloo Regional Municipality
-admin_area_level_1_long Ontario
-admin_area_level_1_short ON
-country_long Canada
-country_short CA
-postal_code N2H 1Z6
-lat 43.4472735
-lng -80.4669525
-formatted_address 400 East Ave, Kitchener, ON N2H 1Z6, Canada
-import_id 1501
-import_address 400 East Ave. Kitchener, ON N2H1Z6
-import_raw_address ['(Home of the Kitchener Rangers)', '400 East Ave.', 'Kitchener, ON N2H1Z6', '519-741-2699']
-notes Home of the Kitchener Rangers
-venue_owner_id None
-created_at 2016-12-06 02:00:23.447421
-updated_at None
-imported True
-distance 99.9661049350131
-
-from modules.venue_search import VenueSearch
-vs = VenueSearch()
-result = vs.get_closest_venues(43.975295, -78.611857)
-
-"""
